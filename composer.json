@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Application": "module/Application/src"
+            "Application": "module/Application/src",
+            "Extend": "module/Extend/src"
         }
     },
     "repositories": [
