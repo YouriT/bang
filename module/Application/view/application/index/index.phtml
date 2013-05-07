@@ -1,26 +1,34 @@
-<div class="hero-unit">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-large" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
+<?php $this->headScript()->captureStart();?>
+$(function () {
+    /*$('#point').height($(window).height() + 20);
+    $('#point').width($(window).width());
+    $('#cover').height($(window).height() + 20);*/
+});
+<?php $this->headScript()->captureEnd();?>    
 
-<div class="row">
+<img src="/img/3.jpeg" class="bg"/>
 
-    <div class="span4">
-        <h2><?php echo $this->translate('Follow Development') ?></h2>
-        <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="http://framework.zend.com/issues/browse/ZF2">', '</a>') ?></p>
-        <p><a class="btn btn-success" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+<div class="container" style="position: relative; margin-top: 200px; z-index: 300;">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="login">
+        <h4><?php echo $this->translate('- it\'s Anonymous -') ?></h4>
+        <h1 class="title"><?php echo $this->translate('Find Friends of Friends who') ?></h1>
+        <h1 class="title"><?php echo $this->translate('desire to bang with you !') ?></h1>
+        <div style="clear: both;"></div>
+        <!-- <p><?php echo $this->translate('We think that "Bang Friends" is too restrictive. That\'s why we suggest you to open your bang attitude to the friends of your friends ! It\'s simple :') ?></p>
+        <h5><?php echo $this->translate('1. Select friends of your friends You want to bang with') ?></h5>
+        <h5><?php echo $this->translate('2. If these persons have selected you too, your are matched !') ?></h5>
+        <p style="margin-left: 25px; margin-top: 20px;"><?php echo $this->translate('Otherwise, don\'t worry, the other isn\'t going be notified. It means that the other person will never know you\'ve noticed her. Keep on mind : Your are safe !') ?></p> -->
+
+        <a class="socialbutton larger facebook" href="/auth/facebook" style="margin-top: 70px;margin-left: 65px;">
+          <span class="social_logo">
+            <i class="icon-facebook icon-large" style="line-height: 40px;"></i>
+          </span>
+          <span class="social_txt">Sign up with Facebook</span>
+        </a>
+
+      </div> 
     </div>
-
-    <div class="span4">
-        <h2><?php echo $this->translate('Discover Modules') ?></h2>
-        <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-        <p><a class="btn btn-success" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-   </div>
-
-   <div class="span4">
-       <h2><?php echo $this->translate('Help &amp; Support') ?></h2>
-       <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-       <p><a class="btn btn-success" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
-   </div>
-</div>
+  </div>     
+</div>    
