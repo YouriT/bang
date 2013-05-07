@@ -1,0 +1,34 @@
+<?php $this->headScript()->captureStart();?>
+$(function () {
+    /*$('#point').height($(window).height() + 20);
+    $('#point').width($(window).width());
+    $('#cover').height($(window).height() + 20);*/
+});
+<?php $this->headScript()->captureEnd();?>    
+
+<img src="/img/3.jpeg" class="bg"/>
+
+<div class="container" style="position: relative; margin-top: 200px; z-index: 300;">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="login">
+        <h4><?php echo $this->translate('- it\'s Anonymous -') ?></h4>
+        <h1 class="title"><?php echo $this->translate('Find Friends of Friends who') ?></h1>
+        <h1 class="title"><?php echo $this->translate('desire to bang with you !') ?></h1>
+        <div style="clear: both;"></div>
+        <!-- <p><?php echo $this->translate('We think that "Bang Friends" is too restrictive. That\'s why we suggest you to open your bang attitude to the friends of your friends ! It\'s simple :') ?></p>
+        <h5><?php echo $this->translate('1. Select friends of your friends You want to bang with') ?></h5>
+        <h5><?php echo $this->translate('2. If these persons have selected you too, your are matched !') ?></h5>
+        <p style="margin-left: 25px; margin-top: 20px;"><?php echo $this->translate('Otherwise, don\'t worry, the other isn\'t going be notified. It means that the other person will never know you\'ve noticed her. Keep on mind : Your are safe !') ?></p> -->
+
+        <a class="socialbutton larger facebook" href="/auth/facebook" style="margin-top: 70px">
+          <span class="social_logo">
+            <i class="icon-facebook icon-large" style="line-height: 40px;"></i>
+          </span>
+          <span class="social_txt">Sign up with Facebook</span>
+        </a>
+
+      </div> 
+    </div>
+  </div>     
+</div>    

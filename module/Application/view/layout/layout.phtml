@@ -9,17 +9,15 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+                        ->prependStylesheet($this->basePath() . '/css/responsive.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-modal.css') ?>
+        <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
 
-        <!-- Scripts -->
-        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-                                      ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
-
+        <!-- Correctif <IE9 -->
+        <!--[if lt IE 9]><script type="text/javascript" src="/js/html5shiv.js"></script><![endif]-->
     </head>
-    <body>
+    <body style="background-image: url(/img/background-grey.png);">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -28,22 +26,46 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Bang Friends of Friends') ?></a>
+                    <!-- <div class="nav-collapse collapse "> -->
+                    <ul class="nav pull-right">
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('About') ?></a></li>
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('How does it works') ?></a></li>
+                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('O-Level') ?></a></li>
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Match') ?></a></li>
+                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Increase batch !') ?></a></li>
+
+
+
+                    </ul>
+                    <!-- </div>/.nav-collapse  -->
                 </div>
             </div>
         </div>
+        <?php echo $this->content; ?>
         <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
             <footer>
-                <p>&copy; 2005 - 2012 by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+              <p>&copy; 2005 - 2012 by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-transition.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-alert.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-modal.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-dropdown.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-scrollspy.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-tab.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-tooltip.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-popover.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-button.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-collapse.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-carousel.js"></script>
+        <script type="text/javascript" src="/js/bootstrap-typeahead.js"></script>
+        <?php echo $this->headScript()?>
     </body>
 </html>
