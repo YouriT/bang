@@ -405,9 +405,18 @@
     //border-color: @navbarInverseBorder;
   }
 
-  .brand,
+  .brand {
+    //text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    font-family: Open Sans;
+    font-weight: bold;
+    font-size: 14px;
+    &:hover,
+    &:focus {
+      color: @maincolorhover;
+    }  
+  }
   .nav > li > a {
-    color: @maincolorhover;
+    color: #543739;
     //text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     font-family: Open Sans;
     font-weight: bold;
@@ -429,6 +438,7 @@
 
   .nav > li > a:focus,
   .nav > li > a:hover {
+    color: @maincolor;
     //background-color: @navbarInverseLinkBackgroundHover;
     //color: @navbarInverseLinkColorHover;
   }
@@ -436,6 +446,7 @@
   .nav .active > a,
   .nav .active > a:hover,
   .nav .active > a:focus {
+    color: @maincolor;
     //color: @navbarInverseLinkColorActive;
     //background-color: @navbarInverseLinkBackgroundActive;
   }

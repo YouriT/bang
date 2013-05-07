@@ -4633,16 +4633,22 @@ input[type="submit"].btn.btn-mini {
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
 }
-.navbar-inverse .brand,
-.navbar-inverse .nav > li > a {
-  color: #7f3ae0;
+.navbar-inverse .brand {
   font-family: Open Sans;
   font-weight: bold;
   font-size: 14px;
 }
 .navbar-inverse .brand:hover,
+.navbar-inverse .brand:focus {
+  color: #7f3ae0;
+}
+.navbar-inverse .nav > li > a {
+  color: #543739;
+  font-family: Open Sans;
+  font-weight: bold;
+  font-size: 14px;
+}
 .navbar-inverse .nav > li > a:hover,
-.navbar-inverse .brand:focus,
 .navbar-inverse .nav > li > a:focus {
   color: #7f3ae0;
 }
@@ -4651,6 +4657,15 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-inverse .navbar-text {
   color: #999999;
+}
+.navbar-inverse .nav > li > a:focus,
+.navbar-inverse .nav > li > a:hover {
+  color: #571bb7;
+}
+.navbar-inverse .nav .active > a,
+.navbar-inverse .nav .active > a:hover,
+.navbar-inverse .nav .active > a:focus {
+  color: #571bb7;
 }
 .navbar-inverse .navbar-link {
   color: #999999;
@@ -9300,7 +9315,7 @@ img.bg {
 }
 .login h4 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 .login h5 {
   margin-top: 30px;
@@ -9376,6 +9391,63 @@ li .icon-large {
   line-height: 40px;
   margin-left: 30px;
   margin-right: 30px;
+}
+.friend {
+  background-color: #ffffff;
+  width: 100%;
+  text-align: center;
+  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+.friend .pic {
+  padding-top: 20px;
+  padding-bottom: 7px;
+}
+.friend p {
+  margin: 0 0 7px;
+}
+.friend .action {
+  background: #e0dede;
+  padding: 7px 15px 7px;
+}
+.friend .new {
+  padding: 7px;
+  color: white;
+  background: #571bb7;
+  display: block;
+  text-align: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.friend .wait {
+  padding: 7px;
+  color: white;
+  background: #32c1f0;
+  display: block;
+  text-align: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.filter {
+  float: right;
+  line-height: 41px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 15px;
+  font-family: DIN Medium;
+  color: #969696;
+}
+.filter:hover {
+  color: #333;
+  text-decoration: none;
 }
 @font-face {
   font-family: 'ProximaNovaRegular';
