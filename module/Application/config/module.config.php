@@ -12,11 +12,11 @@ return array(
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'application_index',
                         'action'     => 'index',
                     ),
                 ),
@@ -25,32 +25,36 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'application' => array(
+            'account' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/account',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
+                        'controller'    => 'application_account',
                         'action'        => 'index',
                     ),
                 ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
             ),
+        	'login' => array(
+        		'type'    => 'Literal',
+        		'options' => array(
+        			'route'    => '/login',
+        			'defaults' => array(
+        				'controller'    => 'application_account',
+        				'action'        => 'facebook',
+        			),
+        		),
+        	),
+        	'logout' => array(
+        		'type'    => 'Literal',
+        		'options' => array(
+        			'route'    => '/logout',
+        			'defaults' => array(
+        				'controller'    => 'application_account',
+        				'action'        => 'logout',
+        			),
+        		),
+        	),
         ),
     ),
     'service_manager' => array(
@@ -70,9 +74,15 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'application_index' => 'Application\Controller\IndexController',
+        	'application_account' => 'Application\Controller\AccountController'
         ),
     ),
+	'controller_plugins' => array(
+		'invokables' => array(
+			'AuthAcl' => 'Application\Model\AuthAcl'
+		),
+	),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

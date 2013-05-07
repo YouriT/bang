@@ -29,6 +29,13 @@ class Bang
 	 */
 	private $dateBang;
 	
+	public function __construct()
+	{
+		$this->dateBang = new \DateTime();
+		$this->from = new ArrayCollection();
+		$this->to = new ArrayCollection();
+	}
+	
 	public function getFrom(){
 		return $this->from;
 	}

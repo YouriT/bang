@@ -14,7 +14,8 @@
         "pear/archive_tar": "dev-master",
         "zucchi/zucchi": "dev-master",
         "zucchi/bootstrap": "dev-master",
-        "zendframework/zend-developer-tools": "0.*"
+        "zendframework/zend-developer-tools": "0.*",
+        "facebook/php-sdk": "3.*"
     },
     "autoload": {
         "psr-0": {

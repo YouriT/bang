@@ -28,15 +28,20 @@ class Picture
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Message")
-	 * @ORM\JoinColumn(name="idMessage", referencedColumnName="idMessage", nullable=true)
+	 * @ORM\JoinColumn(name="idMessage", referencedColumnName="idMessage", nullable=true, onDelete="CASCADE")
 	 */
 	private $message;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="User", inversedBy="pictures")
-	 * @ORM\JoinColumn(name="idUser", referencedColumnName="idUser", nullable=true)
+	 * @ORM\JoinColumn(name="idUser", referencedColumnName="idUser", nullable=true, onDelete="CASCADE")
 	 */
 	private $user;
+	
+	public function __construct()
+	{
+		$this->date = new \DateTime();
+	}
 	
 	public function getIdPicture(){
 		return $this->idPicture;

@@ -9,6 +9,14 @@
 
 namespace Application;
 
+use Application\Entity\User;
+
+use Application\Model\AuthStorage;
+
+use Zend\Authentication\AuthenticationService;
+
+use DoctrineModule\Authentication\Adapter\ObjectRepository;
+
 use Extend\Names;
 
 use Zend\Mvc\ModuleRouteListener;
@@ -27,7 +35,28 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $eventManager->attach('route', array($this, 'loadConfiguration'), 2);
     }
+	
+	public function loadConfiguration(MvcEvent $e)
+	{
+		$application   = $e->getApplication();
+		$sm            = $application->getServiceManager();
+		$sharedManager = $application->getEventManager()->getSharedManager();
+		 
+		$router = $sm->get('router');
+		$request = $sm->get('request');
+		 
+		$matchedRoute = $router->match($request);
+		if (null !== $matchedRoute) {
+			$sharedManager->attach('Zend\Mvc\Controller\AbstractActionController','dispatch',
+				function($e) use ($sm) {
+					$sm->get('ControllerPluginManager')->get('AuthAcl')
+						->doAuthorization($e);
+				},2
+			);
+		}
+	}
 
     public function getConfig()
     {
@@ -43,5 +72,34 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+			'factories' => array(
+				'AuthStorage' => function ($sm) {
+					return new AuthStorage('Bang');
+				},
+				'AuthService' => function ($sm) {
+					$this->em = $sm->get('doctrine.entitymanager.orm_default');
+					$authAdapter = new ObjectRepository(array(
+						'objectManager' => $this->em,
+						'objectRepository' => $this->em->getRepository('Application\Entity\User'),
+						'identityClass' => 'Application\Entity\User',
+						'identityProperty' => 'fbKey',
+						'credentialProperty' => 'fbKey',
+						'credentialCallable' => function ($identity, $cred)
+						{
+							//var_dump($identity,$cred);
+							return $identity->getFbKey();
+						}
+					));
+					$authService = new AuthenticationService();
+					$authService->setAdapter($authAdapter)->setStorage($sm->get('AuthStorage'));
+					return $authService;
+				}
+			)
+		);
     }
 }

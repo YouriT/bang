@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+	const GENDER_UNKNOWN = 0;
+	const GENDER_MALE = 1;
+	const GENDER_FEMALE = 2;
 	/**
 	 * @ORM\Id @ORM\Column(type="integer")
 	 * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -17,7 +20,7 @@ class User
 	private $idUser;
 	
 	/**
-	 * @ORM\Column(type="boolean", nullable=true)
+	 * @ORM\Column(type="boolean")
 	 */
 	private $locked = false;
 	
@@ -25,6 +28,16 @@ class User
 	 * @ORM\Column(type="string")
 	 */
 	private $role = 'user';
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $email;
+	
+	/**
+	 * @ORM\Column(type="boolean")
+	 */
+	private $verified = false;
 	
 	/**
 	 * @ORM\Column(type="string")
@@ -42,7 +55,7 @@ class User
 	private $gender;
 	
 	/**
-	 * @ORM\Column(type="date")
+	 * @ORM\Column(type="date", nullable=true)
 	 */
 	private $birthDate;
 	
@@ -52,12 +65,22 @@ class User
 	private $fbKey;
 	
 	/**
-	 * @ORM\Column(type="string")
+	 * @ORM\Column(type="string", nullable=true)
 	 */
 	private $fbToken;
 	
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	private $lastFbUpdate;
+	
+	/**
+	 * @ORM\Column(type="string", nullable=true)
+	 */
+	private $locale;
+	
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
 	 */
 	private $registerDate;
 	
@@ -77,6 +100,15 @@ class User
 	private $banged;
 	
 	/**
+	 * @ORM\ManyToMany(targetEntity="User")
+	 * @ORM\JoinTable(name="Friends",
+     *      joinColumns={@ORM\JoinColumn(name="user", referencedColumnName="idUser")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="friend", referencedColumnName="idUser")}
+     *      )
+	 */
+	private $friends;
+	
+	/**
 	 * @ORM\OneToMany(targetEntity="Picture", mappedBy="user")
 	 */
 	private $pictures;
@@ -88,10 +120,14 @@ class User
 	
 	public function __construct()
 	{
+		$this->registerDate = new \DateTime();
+		$this->lastFbUpdate = null;
+		$this->lastLogin = null;
 		$this->bangs = new ArrayCollection();
 		$this->banged = new ArrayCollection();
 		$this->pictures = new ArrayCollection();
 		$this->messages = new ArrayCollection();
+		$this->friends = new ArrayCollection();
 	}
 	
 	public function getIdUser(){
@@ -118,6 +154,24 @@ class User
 	
 	public function setRole($role){
 		$this->role = $role;
+		return $this;
+	}
+	
+	public function getEmail(){
+		return $this->email;
+	}
+	
+	public function setEmail($email){
+		$this->email = $email;
+		return $this;
+	}
+	
+	public function getVerified(){
+		return $this->email;
+	}
+	
+	public function setVerified($v){
+		$this->verified = $v ? true : false;
 		return $this;
 	}
 	
@@ -181,6 +235,27 @@ class User
 	/**
 	 * @return \DateTime
 	 */
+	public function getLastFbUpdate(){
+		return $this->lastFbUpdate;
+	}
+	
+	public function setLastFbUpdate(\DateTime $lastFbUpdate){
+		$this->lastFbUpdate = $lastFbUpdate;
+		return $this;
+	}
+	
+	public function getLocale(){
+		return $this->locale;
+	}
+	
+	public function setLocale($locale){
+		$this->locale = $locale;
+		return $this;
+	}
+	
+	/**
+	 * @return \DateTime
+	 */
 	public function getRegisterDate(){
 		return $this->registerDate;
 	}
@@ -223,6 +298,18 @@ class User
 	
 	public function addBanged(Bang $banged){
 		$this->banged->add($banged);
+		return $this;
+	}
+	
+	/**
+	 * @return ArrayCollection
+	 */
+	public function getFriends(){
+		return $this->friends;
+	}
+	
+	public function addFriend(User $u){
+		$this->friends->add($u);
 		return $this;
 	}
 

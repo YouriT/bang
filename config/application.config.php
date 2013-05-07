@@ -10,6 +10,12 @@ return array(
         'ZendDeveloperTools',
     	'Extend',
     ),
+	
+	'facebook' => array(
+		'appId' => '235333173253758',
+		'secret' => '06fcc5883465fcee7875bd20a47c34af',
+		'fileUpload' => false,
+	),
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(

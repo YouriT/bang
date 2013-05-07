@@ -28,13 +28,13 @@ class Message
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="User")
-	 * @ORM\JoinColumn(name="idUserFrom", referencedColumnName="idUser", nullable=false)
+	 * @ORM\JoinColumn(name="idUserFrom", referencedColumnName="idUser", nullable=true, onDelete="SET NULL")
 	 */
 	private $from;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="User")
-	 * @ORM\JoinColumn(name="isUserTo", referencedColumnName="idUser", nullable=false)
+	 * @ORM\JoinColumn(name="idUserTo", referencedColumnName="idUser", nullable=true, onDelete="SET NULL")
 	 */
 	private $to;
 	
