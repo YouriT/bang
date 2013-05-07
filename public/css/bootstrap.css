@@ -9296,9 +9296,11 @@ img.bg {
 }
 .login h1 {
   color: #571bb7;
+  font-family: adelle basic;
 }
 .login h4 {
   text-align: center;
+  margin-bottom: 25px;
 }
 .login h5 {
   margin-top: 30px;
@@ -9317,7 +9319,6 @@ img.bg {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5378c8', endColorstr='#ff305c93', GradientType=0);
 }
 .socialbutton {
-  width: 60%;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -9370,11 +9371,11 @@ li .icon-large {
   font-size: 1.5em;
 }
 .socialbutton.larger .social_txt {
-  width: 271px;
   text-align: center;
   padding: 0 !important;
   line-height: 40px;
   margin-left: 30px;
+  margin-right: 30px;
 }
 @font-face {
   font-family: 'ProximaNovaRegular';
